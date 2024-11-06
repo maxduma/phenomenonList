@@ -26,22 +26,86 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
       <table className="min-w-full bg-white border border-gray-300">
         <thead className="sticky top-0 bg-gray-100">
           <tr>
-            {visibleColumns.includes("fullName") && <th className="p-2 border text-[#626E7B] uppercase">Full Name</th>}
-            {visibleColumns.includes("birthday") && <th className="p-2 border text-[#626E7B] uppercase">Birthday</th>}
-            {visibleColumns.includes("gender") && <th className="p-2 border text-[#626E7B] uppercase">Gender</th>}
-            {visibleColumns.includes("email") && <th className="p-2 border text-[#626E7B] uppercase">Email</th>}
-            {visibleColumns.includes("phone") && <th className="p-2 border text-[#626E7B] uppercase">Phone</th>}
-            {visibleColumns.includes("username") && <th className="p-2 border text-[#626E7B] uppercase">Username</th>}
-            {visibleColumns.includes("generalInfo") && <th className="p-2 border text-[#626E7B] uppercase">General Info</th>}
-            {visibleColumns.includes("domain") && <th className="p-2 border text-[#626E7B] uppercase">Domain</th>}
-            {visibleColumns.includes("ip") && <th className="p-2 border text-[#626E7B] uppercase">IP</th>}
-            {visibleColumns.includes("macIp") && <th className="p-2 border text-[#626E7B] uppercase">MAC IP</th>}
-            {visibleColumns.includes("address") && <th className="p-2 border text-[#626E7B] uppercase">Address</th>}
-            {visibleColumns.includes("bank") && <th className="p-2 border text-[#626E7B] uppercase">Bank</th>}
-            {visibleColumns.includes("university") && <th className="p-2 border text-[#626E7B] uppercase">University</th>}
-            {visibleColumns.includes("company") && <th className="p-2 border text-[#626E7B] uppercase">Company</th>}
-            {visibleColumns.includes("ein") && <th className="p-2 border text-[#626E7B] uppercase">EIN</th>}
-            {visibleColumns.includes("ssn") && <th className="p-2 border text-[#626E7B] uppercase">SSN</th>}
+            {visibleColumns.includes("fullName") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Full Name
+              </th>
+            )}
+            {visibleColumns.includes("birthday") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Birthday
+              </th>
+            )}
+            {visibleColumns.includes("gender") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Gender
+              </th>
+            )}
+            {visibleColumns.includes("email") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Email
+              </th>
+            )}
+            {visibleColumns.includes("phone") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Phone
+              </th>
+            )}
+            {visibleColumns.includes("username") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Username
+              </th>
+            )}
+            {visibleColumns.includes("generalInfo") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                General Info
+              </th>
+            )}
+            {visibleColumns.includes("domain") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Domain
+              </th>
+            )}
+            {visibleColumns.includes("ip") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                IP
+              </th>
+            )}
+            {visibleColumns.includes("macIp") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                MAC IP
+              </th>
+            )}
+            {visibleColumns.includes("address") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Address
+              </th>
+            )}
+            {visibleColumns.includes("bank") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Bank
+              </th>
+            )}
+            {visibleColumns.includes("university") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                University
+              </th>
+            )}
+            {visibleColumns.includes("company") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                Company
+              </th>
+            )}
+            {visibleColumns.includes("ein") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                EIN
+              </th>
+            )}
+            {visibleColumns.includes("ssn") && (
+              <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' }}>
+                SSN
+              </th>
+            )}
             <th className="p-2 border relative">
               <button onClick={() => setShowSettings((prev) => !prev)} className="flex items-center justify-center">
                 <HiCog className="w-5 h-5 text-[#626E7B]" />
@@ -83,4 +147,5 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
     </div>
   );
 };
+
 export default Table;
