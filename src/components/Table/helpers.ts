@@ -20,3 +20,14 @@ export const formatBirthday = (birthDate: string) => {
 
   return `${day}.${month}.${year} (${age} years old)`;
 };
+
+export const formatPhoneNumber = (phone: string): string => {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length < 10) {
+    return phone;
+  }
+
+  const formattedDigits = digits.slice(-10);
+
+  return `(${formattedDigits.slice(0, 3)}) ${formattedDigits.slice(3, 6)}-${formattedDigits.slice(6)}`;
+}

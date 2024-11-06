@@ -3,7 +3,7 @@ import { User } from "../../types";
 import { HiCog } from "react-icons/hi";
 import { FaMale, FaFemale } from "react-icons/fa";
 import Settings from "../Settings/Settings";
-import { formatBirthday } from "./helpers";
+import { formatBirthday, formatPhoneNumber } from "./helpers";
 
 interface TableProps {
   users: User[];
@@ -167,7 +167,7 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
             {visibleColumns.includes("phone") && (
               <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
                 <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
-                  {user.phone}
+                  {formatPhoneNumber(user.phone)}
                 </span>
               </td>
             )}
