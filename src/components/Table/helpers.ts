@@ -42,3 +42,8 @@ export const formatGeneralInfo = (user: User): string => {
 
   return [bloodGroup, height, weight, hairColor].filter(Boolean).join('; ');
 }
+
+export const getDomainFromEmail = (email: string): string => {
+  const emailParts = email.split("@");
+  return emailParts.length > 1 ? emailParts[1] : "";
+};
