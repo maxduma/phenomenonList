@@ -3,7 +3,7 @@ import { User } from "../../types";
 import { HiCog } from "react-icons/hi";
 import { FaMale, FaFemale } from "react-icons/fa";
 import Settings from "../Settings/Settings";
-import { formatBirthday, formatGeneralInfo, formatPhoneNumber } from "./helpers";
+import { formatBirthday, formatGeneralInfo, formatPhoneNumber, getDomainFromEmail } from "./helpers";
 
 interface TableProps {
   users: User[];
@@ -185,10 +185,20 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
                 </span>
               </td>
             )}
-            {visibleColumns.includes("domain") && (
+           {visibleColumns.includes("domain") && (
               <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
                 <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
-                  {/* {user.domain} */}
+                  <a 
+                    href={`https://${getDomainFromEmail(user.email)}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{
+                      color: 'blue',
+                      textDecoration: 'underline'
+                    }}
+                  >
+                    {getDomainFromEmail(user.email)}
+                  </a>
                 </span>
               </td>
             )}
@@ -209,14 +219,14 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
             {visibleColumns.includes("address") && (
               <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
                 <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
-                  {`${user.address?.address || ""}, ${user.address?.city || ""}`}
+                  {`${user.address?.address || ""}, ${user.address?.city || ""}, ${user.address?.state || ""} ${user.address?.postalCode || ""}`}
                 </span>
               </td>
             )}
             {visibleColumns.includes("bank") && (
               <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
                 <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
-                  {`${user.bank?.cardType || ""}, ${user.bank?.cardNumber || ""}`}
+                  {user.bank?.cardType || ""}
                 </span>
               </td>
             )}
