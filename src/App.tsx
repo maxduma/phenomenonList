@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { User } from "./types"; // Ваш тип User
+import SearchBar from "./components/SearchBar/SearchBar";
+import Table from "./components/Table/Table";
+import Pagination from "./components/Pagination/Pagination";
 
-function App() {
+const App: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [visibleColumns, setVisibleColumns] = useState<string[]>([
+    "fullName", "email", "username",
+    "birthday", "gender", "phone",
+  ]);
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    fetch(`https://dummyjson.com/users?limit=${itemsPerPage}&skip=${(page - 1) * itemsPerPage}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data.users);
+        setTotalPages(Math.ceil(data.total / itemsPerPage));
+        setTotalUsers(data.total);
+      });
+  }, [page, itemsPerPage]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-4">
+      <SearchBar query={query} setQuery={setQuery} />
+      <Table
+        users={users}
+        visibleColumns={visibleColumns}
+        setVisibleColumns={setVisibleColumns}
+        query={query}
+        setShowSettings={setShowSettings}
+        showSettings={showSettings}
+      />
+      <Pagination
+        page={page}
+        setPage={setPage}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        totalPages={totalPages}
+        totalUsers={totalUsers}
+      />
     </div>
   );
-}
-
+};
 export default App;
