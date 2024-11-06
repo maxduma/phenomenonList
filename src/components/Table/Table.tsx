@@ -1,7 +1,9 @@
 import React from "react";
 import { User } from "../../types";
 import { HiCog } from "react-icons/hi";
+import { FaMale, FaFemale } from "react-icons/fa";
 import Settings from "../Settings/Settings";
+import { formatBirthday } from "./helpers";
 
 interface TableProps {
   users: User[];
@@ -118,30 +120,129 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
         </thead>
         <tbody>
           {filteredUsers.map((user) => (
-            <tr key={user.id}>
-              {visibleColumns.includes("fullName") && (
-                <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{`${user.firstName} ${user.lastName}`}</td>
-              )}
-              {visibleColumns.includes("birthday") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.birthDate}</td>}
-              {visibleColumns.includes("gender") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.gender}</td>}
-              {visibleColumns.includes("email") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.email}</td>}
-              {visibleColumns.includes("phone") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.phone}</td>}
-              {visibleColumns.includes("username") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.username}</td>}
-              {visibleColumns.includes("domain") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.domain}</td>}
-              {visibleColumns.includes("ip") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.ip}</td>}
-              {visibleColumns.includes("macIp") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.macAddress}</td>}
-              {visibleColumns.includes("address") && (
-                <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{`${user.address?.address || ""}, ${user.address?.city || ""}`}</td>
-              )}
-              {visibleColumns.includes("bank") && (
-                <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{`${user.bank?.cardType || ""}, ${user.bank?.cardNumber || ""}`}</td>
-              )}
-              {visibleColumns.includes("university") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.university}</td>}
-              {visibleColumns.includes("company") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.company?.name}</td>}
-              {visibleColumns.includes("ein") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.ein}</td>}
-              {visibleColumns.includes("ssn") && <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>{user.ssn}</td>}
-            </tr>
-          ))}
+          <tr key={user.id}>
+            {visibleColumns.includes("fullName") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <div className="flex items-center">
+                  <img
+                    src={user.image} 
+                    alt={`${user.firstName} ${user.lastName}`}
+                    className="w-8 h-8 rounded-full mr-2 border-[1px] border-[rgba(0,0,0,0.34)]" 
+                  />
+                  <span
+                    style={{
+                      fontWeight: 500,
+                      fontSize: '13px',
+                      lineHeight: '20px',
+                      marginTop: '6px',
+                    }}
+                  >
+                    {`${user.firstName} ${user.lastName}`}
+                  </span>
+                </div>
+              </td>
+            )}
+            {visibleColumns.includes("birthday") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {formatBirthday(user.birthDate)}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("gender") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.gender === "male" ? <FaMale className="inline mr-1" /> : <FaFemale className="inline mr-1" />}
+                  {user.gender}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("email") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.email}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("phone") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.phone}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("username") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.username}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("domain") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.domain}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("ip") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.ip}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("macIp") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.macAddress}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("address") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {`${user.address?.address || ""}, ${user.address?.city || ""}`}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("bank") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {`${user.bank?.cardType || ""}, ${user.bank?.cardNumber || ""}`}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("university") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.university}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("company") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.company?.name}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("ein") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.ein}
+                </span>
+              </td>
+            )}
+            {visibleColumns.includes("ssn") && (
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+                <span style={{ fontWeight: 400, fontSize: '13px', lineHeight: '20px', marginTop: '6px' }}>
+                  {user.ssn}
+                </span>
+              </td>
+            )}
+          </tr>
+        ))}
         </tbody>
       </table>
     </div>
