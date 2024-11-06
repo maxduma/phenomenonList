@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { User } from "./types"; // Ваш тип User
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { User } from "./types";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Table from "./components/Table/Table";
 import Pagination from "./components/Pagination/Pagination";
@@ -28,25 +29,33 @@ const App: React.FC = () => {
   }, [page, itemsPerPage]);
 
   return (
-    <div className="container mx-auto p-4">
-      <SearchBar query={query} setQuery={setQuery} />
-      <Table
-        users={users}
-        visibleColumns={visibleColumns}
-        setVisibleColumns={setVisibleColumns}
-        query={query}
-        setShowSettings={setShowSettings}
-        showSettings={showSettings}
-      />
-      <Pagination
-        page={page}
-        setPage={setPage}
-        itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
-        totalPages={totalPages}
-        totalUsers={totalUsers}
-      />
-    </div>
+    <Router basename="/phenomenonList">
+      <div className="container mx-auto p-4">
+        <SearchBar query={query} setQuery={setQuery} />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Table
+                users={users}
+                visibleColumns={visibleColumns}
+                setVisibleColumns={setVisibleColumns}
+                query={query}
+                setShowSettings={setShowSettings}
+                showSettings={showSettings}
+              />
+              <Pagination
+                page={page}
+                setPage={setPage}
+                itemsPerPage={itemsPerPage}
+                setItemsPerPage={setItemsPerPage}
+                totalPages={totalPages}
+                totalUsers={totalUsers}
+              />
+            </>
+          } />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 export default App;
