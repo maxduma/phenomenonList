@@ -52,7 +52,16 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns }
           className="flex items-center justify-between mb-1 cursor-pointer"
           onClick={() => handleCheckboxChange(col.value)}
         >
-          <span>{col.label}</span>
+          <span
+            style={{
+              fontWeight: 400,
+              fontSize: "13px",
+              lineHeight: "20px",
+              letterSpacing: "0.6px",
+            }}
+          >
+            {col.label}
+          </span>
           {visibleColumns.includes(col.value) && (
             <svg
               width="12"
