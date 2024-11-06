@@ -18,6 +18,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ query, setQuery }) => {
         onChange={(e) => setQuery(e.target.value)}
         className="w-full pl-10 p-2 border border-[#EAEDF0] bg-[#F8F9F9] rounded-[8px] placeholder-[#5F6E7C]"
         placeholder="Search"
+        style={{ fontWeight: "normal" }}
       />
     </div>
   );

@@ -43,7 +43,7 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns }
   return (
     <div
       className="absolute top-15 right-0 bg-white p-4 shadow-lg border border-gray-300 rounded-md z-10"
-      style={{ minWidth: "250px", maxHeight: "300px", overflowY: "auto" }}
+      style={{ minWidth: "250px", maxHeight: "300px", overflowY: "auto", borderRadius: "12px" }}
     >
       <SearchBar query={query} setQuery={setQuery} />
       {filteredColumns.map((col) => (
