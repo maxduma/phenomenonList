@@ -1,3 +1,5 @@
+import { User } from "../../types";
+
 const calculateAge = (birthDate: string) => {
   const today = new Date();
   const birth = new Date(birthDate);
@@ -30,4 +32,13 @@ export const formatPhoneNumber = (phone: string): string => {
   const formattedDigits = digits.slice(-10);
 
   return `(${formattedDigits.slice(0, 3)}) ${formattedDigits.slice(3, 6)}-${formattedDigits.slice(6)}`;
+}
+
+export const formatGeneralInfo = (user: User): string => {
+  const bloodGroup = user.bloodGroup ? `Blood Group "${user.bloodGroup}"` : '';
+  const height = user.height ? `Height ${user.height}` : '';
+  const weight = user.weight ? `Weight ${user.weight}` : '';
+  const hairColor = user.hair?.color ? `Hair Color ${user.hair.color}` : '';
+
+  return [bloodGroup, height, weight, hairColor].filter(Boolean).join('; ');
 }
