@@ -47,7 +47,7 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
                 <HiCog className="w-5 h-5 text-[#626E7B]" />
               </button>
               {showSettings && (
-                <Settings visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} />
+                <Settings visibleColumns={visibleColumns} setVisibleColumns={setVisibleColumns} closeSettings={() => setShowSettings(false)} />
               )}
             </th>
           </tr>

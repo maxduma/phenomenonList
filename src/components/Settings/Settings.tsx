@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import useClickOutside from "../../hooks/useClickOutside";
 
 interface SettingsProps {
   visibleColumns: string[];
   setVisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
+  closeSettings: () => void;
 }
 
-const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns }) => {
+const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns, closeSettings }) => {
   const [query, setQuery] = useState<string>("");
+  const settingsRef = useRef<HTMLDivElement>(null);
 
   const columns = [
     { label: "Full Name", value: "fullName" },
@@ -40,8 +43,13 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns }
     col.label.toLowerCase().includes(query.toLowerCase())
   );
 
+  useClickOutside(settingsRef, () => {
+    closeSettings();
+  });
+
   return (
     <div
+      ref={settingsRef}
       className="absolute top-15 right-0 bg-white p-4 shadow-lg border border-gray-300 rounded-md z-10"
       style={{ minWidth: "250px", maxHeight: "300px", overflowY: "auto", borderRadius: "12px" }}
     >
