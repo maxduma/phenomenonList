@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface PaginationProps {
   page: number;
@@ -17,10 +17,20 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   totalUsers,
 }) => {
+  const [inputValue, setInputValue] = useState<string>(page.toString());
+
   const handlePageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPage = Number(e.target.value);
-    if (newPage >= 1 && newPage <= totalPages) {
-      setPage(newPage);
+    const newValue = e.target.value;
+    if (/^\d*$/.test(newValue)) {
+      setInputValue(newValue);
+      if (newValue === "") {
+        setPage(1);
+      } else {
+        const newPage = Number(newValue);
+        if (newPage >= 1 && newPage <= totalPages) {
+          setPage(newPage);
+        }
+      }
     }
   };
 
@@ -99,11 +109,9 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
         <input
           type="text"
-          value={page}
+          value={inputValue}
           onChange={handlePageChange}
           className="w-16 p-2 border rounded-[8px] text-center text-[#5F6E7C]"
-          min={1}
-          max={totalPages}
         />
         <button
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
