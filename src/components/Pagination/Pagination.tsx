@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ItemsPerPageSelector from "./ItemsPerPageSelector";
 
 interface PaginationProps {
   page: number;
@@ -39,24 +40,10 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="flex justify-between items-center mt-4">
-      <div className="relative">
-        <select
-          value={itemsPerPage}
-          onChange={(e) => setItemsPerPage(Number(e.target.value))}
-          className="p-2 border border-[#EAEDF0] bg-[#F8F9F9] rounded-[8px] pr-10 cursor-pointer"
-          style={{ WebkitAppearance: "none", MozAppearance: "none" }}
-        >
-          <option value={10}>10 items</option>
-          <option value={20}>20 items</option>
-          <option value={50}>50 items</option>
-        </select>
-        <span className="absolute pb-1 right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-          <svg width="22" height="22" viewBox="0 0 20 20" fill="#265BAC">
-            <path d="M10 14l-6-6h12l-6 6z" />
-          </svg>
-        </span>
-      </div>
-
+      <ItemsPerPageSelector
+        itemsPerPage={itemsPerPage} 
+        setItemsPerPage={setItemsPerPage} 
+      />
       <div className="flex items-center gap-4">
         <span className="text-[#5F6E7C]">
           {startIndex}-{endIndex} of {totalUsers}
