@@ -40,10 +40,13 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="flex justify-between items-center mt-4">
-      <ItemsPerPageSelector
-        itemsPerPage={itemsPerPage} 
-        setItemsPerPage={setItemsPerPage} 
-      />
+      <div className="flex items-center gap-2">
+        <ItemsPerPageSelector
+          itemsPerPage={itemsPerPage} 
+          setItemsPerPage={setItemsPerPage} 
+        />
+        <span className="font-semibold text-[10px] leading-[12px] tracking-[0.2px] text-[#5F6E7C]">ITEMS PER PAGE</span>
+      </div>
       <div className="flex items-center gap-4">
         <span className="text-[#5F6E7C]">
           {startIndex}-{endIndex} of {totalUsers}
