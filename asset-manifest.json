@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/phenomenonList/static/css/main.10be8f66.css",
+    "main.js": "/phenomenonList/static/js/main.28476881.js",
+    "static/js/453.3b389c57.chunk.js": "/phenomenonList/static/js/453.3b389c57.chunk.js",
+    "index.html": "/phenomenonList/index.html",
+    "main.10be8f66.css.map": "/phenomenonList/static/css/main.10be8f66.css.map",
+    "main.28476881.js.map": "/phenomenonList/static/js/main.28476881.js.map",
+    "453.3b389c57.chunk.js.map": "/phenomenonList/static/js/453.3b389c57.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10be8f66.css",
+    "static/js/main.28476881.js"
+  ]
+}
