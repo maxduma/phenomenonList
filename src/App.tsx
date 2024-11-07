@@ -31,10 +31,10 @@ const App: React.FC = () => {
   return (
     <Router basename="/phenomenonList">
       <div className="container mx-auto p-4">
-        <SearchBar query={query} setQuery={setQuery} />
         <Routes>
           <Route path="/" element={
             <>
+              <SearchBar query={query} setQuery={setQuery} />
               <Table
                 users={users}
                 visibleColumns={visibleColumns}
