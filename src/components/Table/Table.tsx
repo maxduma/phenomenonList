@@ -24,9 +24,9 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
   );
 
   return (
-    <div className="overflow-auto max-h-[550px] relative">
+    <div className="overflow-hidden max-h-[550px] relative" style={{ borderRadius: '4px' }}>
       <table className="min-w-full bg-white border border-gray-300 table-fixed">
-        <thead className="sticky top-0 bg-gray-100">
+        <thead className="sticky top-0 bg-gray-100" style={{ borderRadius: '30px' }}>
           <tr>
             {visibleColumns.includes("fullName") && (
               <th className="p-2 border text-[#626E7B] uppercase" style={{ fontWeight: 600, fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px', whiteSpace: 'nowrap' }}>
