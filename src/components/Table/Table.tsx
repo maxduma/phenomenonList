@@ -24,8 +24,8 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
   );
 
   return (
-    <div className="overflow-hidden max-h-[550px] relative" style={{ borderRadius: '4px' }}>
-      <table className="min-w-full bg-white border border-gray-300 table-fixed">
+    <div className="overflow-x-auto overflow-y-auto max-h-[550px] relative" style={{ borderRadius: '4px' }}>
+  <table className="min-w-full bg-white border border-gray-300" style={{ tableLayout: "auto" }}>
         <thead className="sticky top-0 bg-gray-100" style={{ borderRadius: '30px' }}>
           <tr>
             {visibleColumns.includes("fullName") && (
@@ -122,7 +122,7 @@ const Table: React.FC<TableProps> = ({ users, visibleColumns, setVisibleColumns,
           {filteredUsers.map((user) => (
           <tr key={user.id}>
             {visibleColumns.includes("fullName") && (
-              <td className="p-2 border" style={{ whiteSpace: 'nowrap' }}>
+              <td className="p-2 border" style={{ whiteSpace: 'nowrap', minWidth: '200px' }}>
                 <div className="flex items-center">
                   <img
                     src={user.image} 
