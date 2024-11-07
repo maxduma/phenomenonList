@@ -30,8 +30,11 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns, 
     { label: "EIN", value: "ein" },
     { label: "SSN", value: "ssn" },
   ];
+  const lockedColumns = ["fullName", "email", "username"];
 
   const handleCheckboxChange = (value: string) => {
+    if (lockedColumns.includes(value)) return;
+
     if (visibleColumns.includes(value)) {
       setVisibleColumns(visibleColumns.filter((col) => col !== value));
     } else {
@@ -44,7 +47,7 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns, 
   );
 
   useClickOutside(settingsRef, () => {
-    closeSettings();
+    closeSettings()
   });
 
   return (
@@ -91,4 +94,5 @@ const Settings: React.FC<SettingsProps> = ({ visibleColumns, setVisibleColumns, 
     </div>
   );
 };
+
 export default Settings;
